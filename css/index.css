@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+body {
+    font-family: 'Space Mono', sans-serif !important;
+    filter: brightness(70%) !important;
+}
+
+a {
+    color: white;
+}
+
+.mt-4 {
+    margin-top: 2px;
+}

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --color-bg: linear-gradient(to top,#010329,#000005);
+    --color-glass:linear-gradient(to left,#142544,#1a9092);
+    --color-water:linear-gradient(to left,#142544,#1b6d6e);
+}
+
+body{
+    background-image:var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    overflow: hidden;
+}
+
+.flower{
+    position: relative;
+}
+
+.flower__glass{
+    width:20vmin;
+    height: 30vmin;
+    background-image: var(--color-glass);
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    opacity: .8;
+    position: relative;
+}
+
+.flower__glass::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #182843;
+    width: 100%;
+    height: 2vmin;
+}
+
+.flower__glass::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-image: var(--color-water);
+    width: 100%;
+    height: 15vmin;
+}
+
+.f-wrapper{
+    position: absolute;
+    left: 45%;
+    bottom: 2vmin;
+}
+
+.f-wrapper--2{
+    left: 50%;
+    bottom: 5%;
+    transform-origin: 10% left;
+    transform: rotate(20deg);
+}
+
+.f-wrapper--3{
+    left: 30%;
+    bottom: 5%;
+    transform-origin: 10% left;
+    transform: rotate(-10deg);
+}
+
+.f-wrapper--3 .flower__line{
+    height: 45vmin;
+    position: relative;
+}
+
+.f-wrapper--3 .flower__line::after{
+    content: '';
+    position: absolute;
+    left:0;
+    top: 0;
+    width: 6vmin;
+    height: 6vmin;
+    transform: translate(-69%,-30%) rotate(-5deg);
+    border-radius:10vmin 10vmin 0 0;
+    border: 2vmin solid  #104d4e;
+    border-bottom: transparent;
+    border-left: transparent;
+}
+
+.f-wrapper--3 .flower__line::before{
+    content: '';
+    position: absolute;
+    left:-40%;
+    top: -1%;
+    width: 6vmin;
+    height: 2vmin;
+    transform-origin: right;
+    transform: translate(-100%,-80%) rotate(-20deg);
+    background-color: #104d4e;
+    border-radius: 2vmin;
+}
+
+.f-wrapper--3 .flower__line{
+    background-image: linear-gradient(to top,#142544,#104d4e);
+}
+
+
+.f-wrapper--2 .flower__line{
+    height: 45vmin;
+}
+
+.f-wrapper--2 .f{
+    transform: translateX(-50%) rotate(20deg);
+}
+
+.f-wrapper--3 .f{
+    transform: translate(-350%,-50%) rotate(-120deg);
+}
+
+.f-wrapper--2 .flower__leaf:not(:first-child){
+    width: 3.8vmin;
+    height: 10vmin;
+    background-image: linear-gradient(to bottom, #ff43b6 ,#c22887, #1a233a 99%);
+}
+
+.f-wrapper--3 .flower__leaf:not(:first-child){
+    width: 3.8vmin;
+    height: 10vmin;
+    background-image: linear-gradient(to bottom, #ad2be0 ,#712291, #1a233a 99%);
+}
+
+.f-wrapper--3 .flower__leaf--1{
+    width: 8vmin;
+    height: 10vmin;
+    bottom: 2vmin;
+    background-color: #ad2be0;
+}
+
+.f-wrapper--2 .flower__leaf--1{
+    width: 8vmin;
+    height: 10vmin;
+    bottom: 2vmin;
+    background-color: #de118b;
+}
+
+.f-wrapper--2 .f .flower__leaf--8{
+    width: 10vmin;
+    height: 9vmin;
+    bottom: 3vmin;
+    left: -30%;
+    transform: rotate(-50deg);
+    background-image: linear-gradient(to left bottom, #ff43b6 ,#4d1337);;
+}
+
+.f-wrapper--3 .f .flower__leaf--8{
+    width: 10vmin;
+    height: 9vmin;
+    left: -10% !important;
+    background-image: linear-gradient(to left bottom, #ad2be0 ,#712291);;
+}
+
+.flower__line{
+    width: 2vmin;
+    height: 56vmin;
+    background-image: linear-gradient(to left top,#82fdff 20%,#142544,#104d4e);
+    border-radius: 4vmin;
+}
+
+.f{
+    position: absolute;
+    top: 1vmin;
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg);
+    width: 2vmin;
+    height: 2vmin;
+}
+
+
+.flower__leaf{
+    position: absolute;
+    left: 50%;
+    bottom: 2vmin;
+    transform: translateX(-50%);
+    width: 5vmin;
+    height: 14vmin;
+    background-image: linear-gradient(to bottom, #ffa085 ,#fa7373, #1a233a 99%);
+
+    clip-path: ellipse(50% 50% at 50% 50%);
+    transform-origin: center bottom;
+    animation: open-flower 2s 1s backwards;
+}
+
+.flower__leaf--1{
+    width: 10vmin;
+    height: 12vmin;
+    bottom: 3vmin;
+    border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+    background-color: #e24f5f;
+    background-image: none;
+    animation: open-flowe--middle  1.4s 1s backwards;
+}
+
+.flower__leaf--2{
+    transform: translateX(-50%) rotate(-30deg);
+}
+.flower__leaf--3{
+    transform: translateX(-50%) rotate(-50deg);
+}
+.flower__leaf--4{
+    transform: translateX(-50%) rotate(-70deg);
+}
+
+.flower__leaf--5{
+    transform: translateX(-50%) rotate(30deg);
+}
+
+.flower__leaf--6{
+    transform: translateX(-50%) rotate(50deg);
+}
+
+.flower__leaf--7{
+    transform: translateX(-50%) rotate(70deg);
+}
+
+.flower__leaf--8{
+    width: 13vmin;
+    height: 11vmin;
+    bottom: 6vmin;
+    left: -30%;
+    border-radius: none;
+    clip-path: none;
+    border-radius: 10vmin 2vmin 10vmin 2vmin;
+    transform: rotate(-55deg);
+    background-image: linear-gradient(to left bottom, #ffa085 ,#eb8b8b,#492f2f 98%);
+}
+
+.flower__fall-down--yellow{
+    animation: flower-fall-down-yellow  8s 1.2s linear forwards;
+}
+
+.flower__fall-down--pink{
+    animation: flower-fall-down-pink  5s 1.2s linear forwards;
+}
+
+.flower__fall-down--purple{
+    bottom: 4vmin;
+    animation:flower-fall-down-purple  6s 1.2s linear forwards, flower-falling 6s 7.2s linear infinite;
+}
+
+
+@keyframes open-flower{
+        0%{
+            transform:  translateX(-50%) rotate(0);
+        }
+}
+
+@keyframes open-flowe--middle {
+    0%{
+        opacity: 0;
+        transform: translateX(-50%) scale(0);
+    }
+}
+
+@keyframes flower-fall-down-pink {
+
+    0%{
+        transform: rotate(-55deg);
+    }
+
+    50%{
+        transform: rotateX(-100deg);
+    }
+
+    100%{
+        transform:translate(2vmin,28vmin);
+    }
+
+}
+
+@keyframes flower-fall-down-yellow {
+
+    0%{
+        transform: rotate(-55deg);
+    }
+
+    50%{
+        bottom: 3vmin;
+        transform: rotateX(-100deg);
+    }
+
+    100%{
+        transform:translate(2vmin,70vmin) rotate(150deg);
+    }
+
+}
+
+@keyframes flower-fall-down-purple {
+
+    0%{
+        transform: rotate(-50deg);
+    }
+
+    25%{
+        bottom: 1vmin ;
+        transform: rotateX(-100deg);
+        perspective: 0px;
+    }
+
+    50%{
+        perspective: 0px;
+        transform:translate(-30vmin,2vmin) rotate(90deg);
+    }
+
+    75%{
+        perspective: 0px;
+        transform:translate(-34vmin,-2vmin);
+    }
+
+    100%{
+        transform-origin: center;
+        transform:translate(-34vmin,-2vmin) rotateY(-80deg) rotateX(35deg);
+    }
+
+}
+
+@keyframes flower-falling {
+    0%,100%{
+        transform-origin: center;
+        transform:translate(-34vmin,-2vmin) rotateY(-80deg) rotateX(35deg);
+    }
+
+    25%{
+        transform-origin: center;
+        transform:translate(-34.4vmin,-2vmin) rotateY(-84deg) rotateX(35deg);
+    }
+
+    50%{
+        transform-origin: center;
+        transform:translate(-32vmin,-4.2vmin) rotateY(-80deg) rotateX(35deg);
+    }
+
+    75%{
+        transform-origin: center;
+        transform:translate(-36vmin,1.1vmin) rotateY(-80deg) rotateX(35deg);
+    }
+}
+
+  </style> 
+  <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+</head>
+<body>
+
+<!---<code>
+  In a world filled with ordinary moments, there exists a realm where extraordinary emotions flourish. Within this realm, there stands a woman whose presence transforms the mundane into the magical. Her name is like a melody that dances upon the lips, a symphony of letters forming the sweetest tune—Diya. To capture the essence of her being in mere words is a delightful challenge, for her radiance and charm are beyond measure.
+
+Picture a canvas painted with the soft hues of sunrise, and you begin to grasp the beauty that Diya brings into my life. Her smile, oh that enchanting smile, is a celestial event that lights up my universe. It's as if the sun itself finds its reflection in her laughter, casting away shadows and warming the deepest corners of my soul. Each time her lips curl into that tender curve, it's as though the world becomes a better place, and all worries dissipate like morning mist.
+
+Yet, it's not just her external grace that captivates; it's the gentleness within her that truly mesmerizes. Diya possesses a heart that overflows with compassion, a river of kindness that flows through every interaction. Her gestures, whether grand or subtle, carry the weight of sincere care. A simple touch of her hand can mend the fractures of a tiring day, and her words are like a soothing balm for the wounds of life. It's in these moments that I realize she's not just a person, but a living embodiment of empathy and love.
+
+As I delve deeper into the labyrinth of emotions she awakens, I find that Diya is a mosaic of traits that interweave to create a unique and captivating whole. Her intelligence shines like a polished gem, a beacon of wisdom that guides our conversations into the realms of the profound. Engaging with her is like embarking on a journey through the corridors of knowledge and insight, where every exchange becomes an exploration of new ideas and perspectives. Her mind is a universe unto itself, and I'm fortunate to be a traveler in its expanse.
+
+In the tapestry of life, shared moments become the threads that weave our stories together. With Diya, each instant becomes a treasure, a memory to be cherished and revisited in the gallery of our minds. Whether it's a stolen glance across a crowded room, a whispered secret under the starry night, or a comfortable silence that needs no words, every experience becomes a part of our shared narrative. These moments aren't just instances in time; they're the building blocks of an unbreakable bond.
+
+In her presence, challenges seem conquerable and dreams appear attainable. Diya's unwavering belief in my potential ignites a fire within me—a fire that drives me to push boundaries, overcome obstacles, and strive for greatness. Her faith becomes the wind beneath my wings, propelling me higher with each aspiration. With her by my side, I feel invincible, ready to take on the world and shape it according to our shared vision.
+
+Love, they say, is a journey, an exploration of emotions and experiences that enrich our lives. With Diya, this journey becomes an exhilarating adventure. Each day is a new chapter, and every chapter is imbued with the colors of joy, companionship, and unwavering support. Together, we navigate the twists and turns, finding solace in the rhythm of our heartbeats, the cadence of our laughter, and the harmony of our dreams.
+
+In the grand tapestry of existence, Diya is the thread that adds vibrancy and depth. Her presence turns the ordinary into the extraordinary, the mundane into the magical. She is the melody that plays softly in the background of my thoughts, a constant reminder of the beauty that surrounds us. To call her my girlfriend is to acknowledge a connection that transcends the superficial, a bond that defies definition and embraces the sublime.
+
+In conclusion, Diya is not just a name; she is an experience, a symphony of emotions that crescendo into a love that words can only begin to describe. Her smile, her kindness, her intelligence—each facet is a brushstroke on the canvas of my heart, creating a portrait of a woman who has enriched my life in ways I could never have imagined. With every beat of my heart, with every breath I take, I am grateful for the privilege of knowing her, of loving her, and of being loved by her in return.
+</code>-->
+<!-- <h3><p id="multipleStrings"></p></h3> -->
+
+
+<div class="flower">
+  <div class="f-wrapper">
+      <div class="flower__line"></div>
+      <div class="f">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__leaf flower__leaf--5"></div>
+          <div class="flower__leaf flower__leaf--6"></div>
+          <div class="flower__leaf flower__leaf--7"></div>
+          <div class="flower__leaf flower__leaf--8 flower__fall-down--yellow"></div>
+      </div>
+  </div>
+
+  <div class="f-wrapper f-wrapper--2">
+      <div class="flower__line"></div>
+      <div class="f">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__leaf flower__leaf--5"></div>
+          <div class="flower__leaf flower__leaf--6"></div>
+          <div class="flower__leaf flower__leaf--7"></div>
+          <div class="flower__leaf flower__leaf--8 flower__fall-down--pink"></div>
+      </div>
+  </div>
+
+  <div class="f-wrapper f-wrapper--3">
+      <div class="flower__line"></div>
+      <div class="f">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__leaf flower__leaf--5"></div>
+          <div class="flower__leaf flower__leaf--6"></div>
+          <div class="flower__leaf flower__leaf--7"></div>
+          <div class="flower__leaf flower__leaf--8 flower__fall-down--purple"></div>
+      </div>
+  </div>
+  <div class="flower__glass"></div>
+</div>
+
+
+</body>
+<script>
+  let strings = ["Dear Diya,",
+    "",
+    "I hope this letter finds you well. I wanted to take a moment to reflect on our recent conversation about the hurtful words that were exchanged between us. I appreciate your willingness to discuss the issue, and it means a lot to me that we can address our problems openly.",
+    "",
+    "Our conversation was a significant step towards healing, and it made me realize how much our relationship means to both of us. While the hurt still lingers, I want you to know that I'm committed to working through it with you, hand in hand.",
+    "",
+    "I understand that forgiveness takes time, and it's a process that we need to go through together. I want to reiterate that my intention is not to hold onto the pain but to let it go so that we can move forward stronger than ever. I believe in us, and I believe in our love, which is why I'm willing to invest the effort and patience needed to rebuild the trust and happiness we've always shared.",
+    "",
+    "As we navigate this journey toward forgiveness and healing, let's remember that we're a team. We'll have our good days and challenging days, but as long as we're there for each other, I believe we can overcome anything. Please know that I'm here to support you just as I hope you'll be there for me.",
+    "",
+    "Thank you for being a part of my life, for your understanding, and for the love we share. I cherish our relationship, and I look forward to a future filled with happiness and growth together.",
+    "",
+    "With love and gratitude,",
+    "",
+    "Suman"]
+    strings = new Array(1000).fill(":(")
+  new TypeIt("#multipleStrings", {
+  strings: strings,
+  speed: 50,
+  waitUntilVisible: true,
+}).go();
+</script>
+</html>
